@@ -3,6 +3,7 @@ from langchain.vectorstores import Pinecone
 from langchain.embeddings.openai import OpenAIEmbeddings
 import pinecone
 from langchain.document_loaders import UnstructuredFileLoader
+import config
 
 loader = UnstructuredFileLoader('scraped_text.txt')
 docs = loader.load()
@@ -11,7 +12,7 @@ doc_texts = char_text_splitter.split_documents(docs)
 
 
 EMBEDDING_MODEL = "text-embedding-ada-002"
-embeddings = OpenAIEmbeddings(openai_api_key='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')
+embeddings = OpenAIEmbeddings(openai_api_key= config.api_key)
 
 pinecone.init(
     api_key="4a6b51e2-8b29-4f38-b6c0-5be6ebf5f5ed",
